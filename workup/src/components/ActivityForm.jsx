@@ -7,7 +7,7 @@ export default function ActivityForm(prop) {
           <input type="text" className="form-control" id="id" disabled value={prop.activities.length + 1}/>
         </div>
 
-        <div className="col-md-4">
+        <div className="col-md-6">
           <label className="form-label">Priority</label>
           <select id="priority" className="form-select">
             <option defaultValue="0">Choose...</option>
@@ -17,14 +17,14 @@ export default function ActivityForm(prop) {
           </select>
         </div>
 
-        <div className='col-md-6'>
+        <div>
           <label className="form-label">Title</label>
           <input type="text" className="form-control" id="title"/>
         </div>
 
-        <div className='col-md-6'>
+        <div>
           <label className="form-label">Description</label>
-          <input type="text" className="form-control" id="description"/>
+          <textarea type="text" className="form-control" id="description"/>
         </div>
 
         <div className='col-12'>

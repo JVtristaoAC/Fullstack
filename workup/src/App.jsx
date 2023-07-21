@@ -22,7 +22,9 @@ function App() {
   const [activities, setActivities] = useState(initialState);
 
   function AddActivity(e) {
-    e.preventDefault()
+    e.preventDefault();
+
+    
     
     const newActivity =  {
       id: document.getElementById('id').value,
@@ -31,12 +33,30 @@ function App() {
       priority: document.getElementById('priority').value
     }
 
-    setActivities([...activities, {...newActivity}])
+    setActivities([...activities.filter(activity => activity.id !== document.getElementById('id').value), {...newActivity}].sort((a, b) => a.id - b.id))
+  
+    ClearValues();
   }
 
   function DeleteActivity(id) {
     setActivities(activities.filter(activity => activity.id !== id));
   }
+
+  function GetActivity(id) {
+    let Activity = activities.filter(activity => activity.id === id)[0];
+
+    document.getElementById('id').value = Activity.id;
+    document.getElementById('description').value = Activity.description;
+    document.getElementById('title').value = Activity.title;
+    document.getElementById('priority').value = Activity.priority;
+  }
+
+  function ClearValues(){
+    document.getElementById('description').value = '',
+    document.getElementById('title').value = '',
+    document.getElementById('priority').value =''
+  }
+
   return (
     <div className='mt-3'>
      <ActivityForm
@@ -45,7 +65,8 @@ function App() {
 
      <ActivityList 
      activities = {activities}
-     DeleteActivity = {DeleteActivity}/>
+     DeleteActivity = {DeleteActivity}
+     GetActivity = {GetActivity}/>
     </div>
   )
 }

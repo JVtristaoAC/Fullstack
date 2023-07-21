@@ -59,7 +59,7 @@ export default function Activity(prop){
                   {prop.activity.description}
                 </p>
                 <div className='d-flex justify-content-end pt-2 m-0 border-top'>
-                  <button className='btn btn-sm btn-outline-primary me-2'>
+                  <button onClick={() => prop.GetActivity(prop.activity.id)} className='btn btn-sm btn-outline-primary me-2'>
                   <i className='fas fa-pen me-2'/>
                     Edit
                   </button>

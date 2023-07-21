@@ -8,6 +8,7 @@ export default function ActivityList(prop) {
               key= {activity.id}
               activity={activity}
               DeleteActivity={prop.DeleteActivity}
+              GetActivity = {prop.GetActivity}
             />
           ))}
       </div>
