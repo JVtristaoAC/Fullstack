@@ -1,4 +1,4 @@
-export default function Activity(prop){
+export default function activity(prop){
     function priorityLabel(param){
         switch(param){
           case '1':
@@ -59,11 +59,11 @@ export default function Activity(prop){
                   {prop.activity.description}
                 </p>
                 <div className='d-flex justify-content-end pt-2 m-0 border-top'>
-                  <button onClick={() => prop.GetActivity(prop.activity.id)} className='btn btn-sm btn-outline-primary me-2'>
+                  <button onClick={() => prop.getActivity(prop.activity.id)} className='btn btn-sm btn-outline-primary me-2'>
                   <i className='fas fa-pen me-2'/>
                     Edit
                   </button>
-                  <button onClick={() => prop.DeleteActivity(prop.activity.id)} className='btn btn-sm btn-outline-danger'>
+                  <button onClick={() => prop.deleteActivity(prop.activity.id)} className='btn btn-sm btn-outline-danger'>
                     <i className='fas fa-trash me-2'/>
                     Delete
                   </button>

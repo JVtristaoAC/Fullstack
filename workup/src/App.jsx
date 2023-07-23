@@ -1,5 +1,5 @@
 import './App.css'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import ActivityForm from './components/ActivityForm';
 import ActivityList from './components/ActivityList';
 
@@ -19,54 +19,52 @@ let initialState = [
 ]
 
 function App() {
+  const [index, setIndex] = useState(0);
   const [activities, setActivities] = useState(initialState);
+  const [activity, setActivity] = useState({id: 0});
 
-  function AddActivity(e) {
-    e.preventDefault();
-
-    
-    
-    const newActivity =  {
-      id: document.getElementById('id').value,
-      description: document.getElementById('description').value,
-      title: document.getElementById('title').value,
-      priority: document.getElementById('priority').value
-    }
-
-    setActivities([...activities.filter(activity => activity.id !== document.getElementById('id').value), {...newActivity}].sort((a, b) => a.id - b.id))
+  useEffect(() => {
+    activities.length <= 0 ? setIndex(1) 
+     : setIndex(Math.max.apply(Math, activities.map((i) => i.id)) + 1)
+  }, [activities])
   
-    ClearValues();
+  function addActivity(activ) {
+      setActivities([...activities, {...activ, id: index}])
   }
 
-  function DeleteActivity(id) {
+  function cancelActivity() {
+    setActivity({id: 0});
+  }
+
+  function updateActivity(activity) {
+    setActivities(activities.map(item => item.id === activity.id ? activity : item ));
+    setActivity({id: 0});
+  }
+
+  function deleteActivity(id) {
     setActivities(activities.filter(activity => activity.id !== id));
   }
 
-  function GetActivity(id) {
-    let Activity = activities.filter(activity => activity.id === id)[0];
+  function getActivity(id) {
+    const activity = activities.filter(activity => activity.id === id);
 
-    document.getElementById('id').value = Activity.id;
-    document.getElementById('description').value = Activity.description;
-    document.getElementById('title').value = Activity.title;
-    document.getElementById('priority').value = Activity.priority;
-  }
-
-  function ClearValues(){
-    document.getElementById('description').value = '',
-    document.getElementById('title').value = '',
-    document.getElementById('priority').value =''
+    setActivity(activity[0]);
   }
 
   return (
     <div className='mt-3'>
      <ActivityForm
-     AddActivity={AddActivity}
-     activities = {activities}/>
+     addActivity = {addActivity}
+     updateActivity = {updateActivity}
+     cancelActivity = {cancelActivity}
+     selectActivity = {activity}
+     activities = {activities}
+     />
 
      <ActivityList 
      activities = {activities}
-     DeleteActivity = {DeleteActivity}
-     GetActivity = {GetActivity}/>
+     deleteActivity = {deleteActivity}
+     getActivity = {getActivity}/>
     </div>
   )
 }
