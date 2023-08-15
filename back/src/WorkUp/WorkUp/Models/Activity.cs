@@ -5,14 +5,14 @@
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Priority { get; set; }
+        public Priority Priority { get; set; }
 
         public Activity() { }
 
-        public Activity(int id, string title, string description, string priority)
+        public Activity(int id, string title, string description, Priority priority)
         {
             Id = id;
-            Title = title;  
+            Title = title;
             Description = description;
             Priority = priority;
         }
