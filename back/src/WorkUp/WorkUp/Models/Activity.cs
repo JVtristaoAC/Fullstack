@@ -1,4 +1,6 @@
-﻿namespace WorkUp.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WorkUp.Models
 {
     public class Activity
     {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WorkUp.Data;
 using WorkUp.Models;
 
 namespace WorkUp.Controllers
@@ -7,36 +8,53 @@ namespace WorkUp.Controllers
     [Route("api/[controller]")]
     public class ActivityController : ControllerBase
     {
-        [HttpGet]
-        public string GetActivity()
+        private readonly DataContext _context;
+
+        public ActivityController(DataContext context)
         {
-            return "hello word";
+            _context = context;
+        }
+
+        [HttpGet]
+        public IEnumerable<Activity> GetActivity()
+        {
+            return _context.Activities;
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<Activity> GetActivity(int id)
+        public Activity? GetActivity(int id)
         {
-            return new List<Activity>()
-            {
-            };
+            return _context.Activities.FirstOrDefault(x => x.Id == id);
         }
 
         [HttpPost]
-        public string PostActivity(Activity activity)
+        public Task PostActivity(Activity activity)
         {
-            return "hello word";
+           _context.Activities.Add(activity);
+           _context.SaveChanges();
+
+           return Task.CompletedTask;
         }
 
         [HttpPut("{id}")]
-        public string PutActivity(int id)
+        public Task PutActivity(int id, Activity newActivity)
         {
-            return "hello word";
+            var oldActivity = _context.Activities.FirstOrDefault(x => x.Id == id);
+
+            _context.Update(newActivity);
+
+            return Task.CompletedTask;
         }
 
         [HttpDelete("{id}")]
-        public string DeleteActivity(int id)
+        public Task DeleteActivity(int id)
         {
-            return "hello word";
+            var Activity = _context.Activities.FirstOrDefault(x => x.Id == id);
+
+            if(Activity != null)
+                _context.Remove(Activity);
+
+            return Task.CompletedTask;
         }
     }
 }
