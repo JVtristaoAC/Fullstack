@@ -28,12 +28,12 @@ namespace WorkUp.Controllers
         }
 
         [HttpPost]
-        public Task PostActivity(Activity activity)
+        public Activity PostActivity(Activity activity)
         {
            _context.Activities.Add(activity);
            _context.SaveChanges();
 
-           return Task.CompletedTask;
+           return activity;
         }
 
         [HttpPut]

@@ -3889,19 +3889,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JVtristaoAC\\.nuget\\packages\\": {}
+    "C:\\Users\\Usuario18\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JVtristaoAC\\Desktop\\WorkUp\\back\\src\\WorkUp\\WorkUp\\WorkUp.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario18\\Desktop\\WorkUp\\back\\src\\WorkUp\\WorkUp\\WorkUp.csproj",
       "projectName": "WorkUp",
-      "projectPath": "C:\\Users\\JVtristaoAC\\Desktop\\WorkUp\\back\\src\\WorkUp\\WorkUp\\WorkUp.csproj",
-      "packagesPath": "C:\\Users\\JVtristaoAC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JVtristaoAC\\Desktop\\WorkUp\\back\\src\\WorkUp\\WorkUp\\obj\\",
+      "projectPath": "C:\\Users\\Usuario18\\Desktop\\WorkUp\\back\\src\\WorkUp\\WorkUp\\WorkUp.csproj",
+      "packagesPath": "C:\\Users\\Usuario18\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario18\\Desktop\\WorkUp\\back\\src\\WorkUp\\WorkUp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\JVtristaoAC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario18\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3909,7 +3909,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://sti3.pkgs.visualstudio.com/Zendar/_packaging/ZendarFeed/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
