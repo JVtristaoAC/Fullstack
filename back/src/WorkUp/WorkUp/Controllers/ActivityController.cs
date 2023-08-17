@@ -36,12 +36,14 @@ namespace WorkUp.Controllers
            return Task.CompletedTask;
         }
 
-        [HttpPut("{id}")]
-        public Task PutActivity(int id, Activity newActivity)
+        [HttpPut]
+        public Task PutActivity(Activity newActivity)
         {
-            var oldActivity = _context.Activities.FirstOrDefault(x => x.Id == id);
-
-            _context.Update(newActivity);
+            if (_context.Activities.Any(x => x.Id == newActivity.Id))
+            {
+                _context.Update(newActivity);
+                _context.SaveChanges();
+            }
 
             return Task.CompletedTask;
         }
@@ -52,7 +54,10 @@ namespace WorkUp.Controllers
             var Activity = _context.Activities.FirstOrDefault(x => x.Id == id);
 
             if(Activity != null)
+            {
                 _context.Remove(Activity);
+                _context.SaveChanges();
+            }
 
             return Task.CompletedTask;
         }
