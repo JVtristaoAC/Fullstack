@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { priority } from "../enum/priority";
 
 const inicialActivity = {
@@ -45,7 +44,6 @@ export default function ActivityForm(prop) {
 
   return (
     <div>
-      <h1>Activity {activity.id !== 0 ? activity.id : ""} </h1>
       <form className="row g-3" onSubmit={submitHandler}>
         <div className="col-md-6">
           <label className="form-label">Title</label>
@@ -68,10 +66,10 @@ export default function ActivityForm(prop) {
             onChange={inputTextHandler}
             value={activity.priority}
           >
-            <option defaultValue="0">Choose...</option>
-            <option value="1">Low</option>
-            <option value="2">Medium</option>
-            <option value="3">High</option>
+            <option defaultValue={priority.Undefined}>Choose...</option>
+            <option value={priority.Low}>Low</option>
+            <option value={priority.Medium}>Medium</option>
+            <option value={priority.High}>High</option>
           </select>
         </div>
 
@@ -87,24 +85,18 @@ export default function ActivityForm(prop) {
         </div>
 
         <div className="col-12">
+          <button
+            className="btn btn-outline-success Soutline mb-3"
+            type="submit"
+          >
+            Save
+          </button>
           {activity.id === 0 || activity.id === undefined ? (
-            <button
-              className="btn btn-outline-secondary Soutline mb-3"
-              type="submit"
-            >
-              + Work item
-            </button>
+            ""
           ) : (
             <>
               <button
-                className="btn btn-outline-success Soutline me-2"
-                type="submit"
-              >
-                Save
-              </button>
-
-              <button
-                className="btn btn-outline-warning Soutline"
+                className="btn btn-outline-warning Soutline mb-3 ms-1"
                 onClick={cancelHandler}
               >
                 Cancel

@@ -62,14 +62,20 @@ export default function activity(prop) {
         <p className="card-text">{prop.activity.description}</p>
         <div className="d-flex justify-content-end pt-2 m-0 border-top">
           <button
-            onClick={() => prop.getActivity(prop.activity.id)}
+            onClick={() => {
+              prop.getActivity(prop.activity.id);
+              prop.handleActivityModal();
+            }}
             className="btn btn-sm btn-outline-primary me-2"
           >
             <i className="fas fa-pen me-2" />
             Edit
           </button>
           <button
-            onClick={() => prop.deleteActivity(prop.activity.id)}
+            onClick={() => {
+              prop.getActivity(prop.activity.id);
+              prop.handleConfirmModal();
+            }}
             className="btn btn-sm btn-outline-danger"
           >
             <i className="fas fa-trash me-2" />

@@ -16,7 +16,7 @@ namespace WorkUp.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Activity> GetActivity()
+        public IEnumerable<Activity> GetActivities()
         {
             return _context.Activities;
         }
@@ -37,7 +37,7 @@ namespace WorkUp.Controllers
         }
 
         [HttpPut]
-        public Task PutActivity(Activity newActivity)
+        public IEnumerable<Activity> PutActivity(Activity newActivity)
         {
             if (_context.Activities.Any(x => x.Id == newActivity.Id))
             {
@@ -45,11 +45,11 @@ namespace WorkUp.Controllers
                 _context.SaveChanges();
             }
 
-            return Task.CompletedTask;
+            return _context.Activities;
         }
 
         [HttpDelete("{id}")]
-        public Task DeleteActivity(int id)
+        public IEnumerable<Activity> DeleteActivity(int id)
         {
             var Activity = _context.Activities.FirstOrDefault(x => x.Id == id);
 
@@ -59,7 +59,7 @@ namespace WorkUp.Controllers
                 _context.SaveChanges();
             }
 
-            return Task.CompletedTask;
+            return _context.Activities;
         }
     }
 }
